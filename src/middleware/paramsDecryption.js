@@ -2,7 +2,7 @@ const { decryptAES, decryptRSA } = require('../utils/crypto');
 
 function paramsDecryptionMiddleware(req, res, next) {
   try {
-    const encryptedFields = ['email', 'password'];
+    const encryptedFields = ['email', 'password', 'type'];
 
     // Handle query param decryption (optional usage)
     if (req.query) {

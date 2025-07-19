@@ -12,6 +12,7 @@ async function saveLog(req, res) {
       stack: req.body.stack || "",
       timestamp: new Date(),
       userAgent: req.headers["user-agent"],
+      actualError: req.body.actualError
     });
 
     await logEntry.save();

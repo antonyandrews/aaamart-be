@@ -1,5 +1,5 @@
 const express = require("express");
-const {loginUser} = require("../controllers/authController");
+const {loginUser, refreshTokenHandler} = require("../controllers/authController");
 const { paramsDecryptionMiddleware } = require("../middleware/paramsDecryption");
 const path = require('path');
 const fs = require('fs');
@@ -13,5 +13,6 @@ router.get('/public-key', (req, res) => {
 });
 
 router.route("/login").post(paramsDecryptionMiddleware, loginUser);
+router.route("/refresh-token").post(refreshTokenHandler);
 
 module.exports = router;

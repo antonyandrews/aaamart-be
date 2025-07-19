@@ -20,14 +20,14 @@ const getAllUsers = async (req, res, next) => {
 
 const createUser = async (req, res, next) => {
   try {
-    const { email, firstName, lastName } = req.body;
+    const { email, firstName, lastName, type } = req.body;
 
     // Generate and hash password
     const randomPassword = generateRandomPassword();
     const hashedPassword = await hashPassword(randomPassword);
 
     // Create new user
-    await addUser({ email, firstName, lastName, password: hashedPassword });
+    await addUser({ email, firstName, lastName, password: hashedPassword, type });
 
     // Load the HTML template
     const templatePath = path.join(__dirname, "../templates/registerSuccess.html");

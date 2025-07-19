@@ -9,6 +9,7 @@ const logSchema = new mongoose.Schema({
   stack: String,
   userAgent: String,
   timestamp: { type: Date, default: Date.now },
+  actualError: String
 });
 
 module.exports = mongoose.model('Log', logSchema);

@@ -20,6 +20,11 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true
     },
+    type: {
+      type: Number,
+      required: true,
+      unique: false
+    }
   },
   { timestamps: true }
 );
