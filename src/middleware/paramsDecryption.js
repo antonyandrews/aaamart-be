@@ -2,7 +2,7 @@ const { decryptAES, decryptRSA } = require('../utils/crypto');
 
 function paramsDecryptionMiddleware(req, res, next) {
   try {
-    const encryptedFields = ['email', 'password', 'type'];
+    const encryptedFields = ['email', 'type'];
 
     // Handle query param decryption (optional usage)
     if (req.query) {
@@ -26,7 +26,7 @@ function paramsDecryptionMiddleware(req, res, next) {
         }
       });
     }
-console.log('req.body', req.body);
+    
     next(); // Ensure this is called only once after all decryption
   } catch (error) {
     console.error('Decryption middleware error:', error);

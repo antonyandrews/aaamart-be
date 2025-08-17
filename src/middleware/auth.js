@@ -3,6 +3,8 @@ const jwt = require("jsonwebtoken");
 const authMiddleware = (req, res, next) => {
   const authHeader = req.headers.authorization;
 
+  console.log('authHeader', authHeader);
+
   // Check if the Authorization header exists
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return res
@@ -15,6 +17,7 @@ const authMiddleware = (req, res, next) => {
   try {
     // Verify the token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    console.log('decoded', decoded);
     req.user = decoded; // Attach the decoded user info to the request object
     next(); // Proceed to the next middleware/route handler
   } catch (error) {
